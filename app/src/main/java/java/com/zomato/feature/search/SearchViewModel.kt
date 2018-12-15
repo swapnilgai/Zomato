@@ -45,7 +45,7 @@ class SearchViewModel @Inject constructor(apiAccess: ApiAccess, val context: Con
    * @return Observable<SearchResultState> and observable which describes state for
    */
   private fun getSearchResultApiCall(input: String): Observable<SearchResultState> {
-    return getAutoSuggestResult(input)
+    return getAutoSuggestResult(input, context.getString(R.string.api_key))
       .flatMap { list ->
         return@flatMap if (list == null || list.isEmpty())
           Observable.just(SearchResultState.Error(Throwable(context.getString(R.string.empty_list_error))))

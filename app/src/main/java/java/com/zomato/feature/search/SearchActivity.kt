@@ -1,13 +1,18 @@
 package java.com.zomato.feature.search
 
 import android.os.Bundle
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
+import kotlinx.android.synthetic.main.activity_search.container
+import kotlinx.android.synthetic.main.activity_search.search_edit_text
 import java.com.zomato.R
+import java.com.zomato.afterTextChanged
 import java.com.zomato.di.ViewModelFactory
 import javax.inject.Inject
 
@@ -25,9 +30,18 @@ class SearchActivity : AppCompatActivity(), HasSupportFragmentInjector {
     super.onCreate(savedInstanceState)
     AndroidInjection.inject(this)
     setContentView(R.layout.activity_search)
+
+    searchViewModel = ViewModelProviders.of(this, viewModelFactory)
+      .get(SearchViewModel::class.java)
+
+    (search_edit_text as EditText).afterTextChanged { searchViewModel?.getSearchResult(it) }
+
+    supportFragmentManager.beginTransaction().add(container.id, SearchResultFragment()).commit()
   }
 
   override fun supportFragmentInjector(): AndroidInjector<Fragment> {
     return supportFragmentInjector
   }
+
+
 }

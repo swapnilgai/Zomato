@@ -8,5 +8,5 @@ import java.com.zomato.model.City
 
 interface ApiAccess {
   @GET("cities")
-  fun getAutoSuggestResult(@Query("q") searchString: String): Observable<List<City>>
+  fun getAutoSuggestResult(@Query("user-key") apiKey : String, @Query("q") searchString: String): Observable<List<City>>
 }
