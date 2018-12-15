@@ -83,6 +83,7 @@ dependencies {
   implementation "android.arch.lifecycle:runtime:$android_arch_version"
   implementation "android.arch.lifecycle:extensions:$android_arch_version"
   implementation "android.arch.persistence.room:runtime:$room_version"
+  implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
   kapt "android.arch.persistence.room:compiler:$room_version"
   kapt "android.arch.lifecycle:compiler:$android_arch_version"
   implementation "android.arch.persistence.room:rxjava2:$room_version"
@@ -95,4 +96,3 @@ dependencies {
   kapt "com.google.dagger:dagger-android-processor:$dagger_version"
   implementation "com.google.dagger:dagger-android-support:$dagger_version"
 }
-
