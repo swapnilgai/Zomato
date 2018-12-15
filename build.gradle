@@ -20,7 +20,7 @@ buildscript {
     glide_version = '4.0.0'
     fabric_version = '1.25.4'
     crashlytics_version = '2.6.8'
-    dagger_version = '2.19'
+    dagger_version = '2.16'
     rx_java_version = "2.1.0"
     rx_android_version = "2.0.1"
     room_version = "1.1.0"

@@ -14,17 +14,14 @@
       type="java.com.zomato.feature.search.SearchItemNavigator" />
   </data>
 
-  <android.support.constraint.ConstraintLayout
+  <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="8dp"
-    android:paddingTop="8dp"
     android:onClick="@{() -> navigator.onClick(item)}">
 
     <ImageView
       android:id="@+id/countryFlag"
       android:layout_height="0dp"
-      android:layout_marginLeft="16dp"
       android:layout_marginStart="16dp"
       android:layout_width="0dp"
       app:imageUrl="@{item.countryFlagUrl}"
@@ -54,6 +51,6 @@
       app:layout_constraintTop_toBottomOf="@+id/name"
       />
 
-  </android.support.constraint.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

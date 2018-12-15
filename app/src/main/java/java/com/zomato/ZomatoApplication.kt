@@ -7,7 +7,7 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject
 
-class Application : Application(), HasActivityInjector {
+class ZomatoApplication : Application(), HasActivityInjector {
 
   @Inject
   lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
