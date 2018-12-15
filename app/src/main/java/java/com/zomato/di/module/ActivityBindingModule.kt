@@ -11,9 +11,9 @@ abstract class ActivityBindingModule {
 
   @ActivityScope
   @ContributesAndroidInjector
-  abstract fun contributeSearchActivity() : SearchActivity
+  abstract fun contributeSearchActivity(): SearchActivity
 
   @ActivityScope
   @ContributesAndroidInjector
-  abstract fun contributeSearchResultFragment() : SearchResultFragment
+  abstract fun contributeSearchResultFragment(): SearchResultFragment
 }

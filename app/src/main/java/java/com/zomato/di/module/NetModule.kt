@@ -12,7 +12,6 @@ import java.com.zomato.BuildConfig
 import java.com.zomato.R
 import java.com.zomato.network.ApiAccess
 import java.util.concurrent.TimeUnit
-import javax.inject.Inject
 import javax.inject.Singleton
 
 @Module(includes = [AppModule::class])
@@ -25,7 +24,8 @@ class NetModule {
     @Singleton
     @Provides
     fun provideLoggingInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
-      level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+      level =
+          if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
     }
 
     @JvmStatic

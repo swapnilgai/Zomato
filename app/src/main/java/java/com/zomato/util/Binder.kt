@@ -16,7 +16,8 @@ object Binder {
       .diskCacheStrategy(DiskCacheStrategy.ALL)
       .priority(Priority.HIGH)
       .dontAnimate()
-      .dontTransform(); }
+      .dontTransform();
+  }
 
   @JvmStatic
   @BindingAdapter("imageUrl")

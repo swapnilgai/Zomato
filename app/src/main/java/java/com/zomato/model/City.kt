@@ -24,4 +24,5 @@ data class City(
   @SerializedName("state_id")
   val stateId: Long? = null,
   @SerializedName("state_name")
-  val stateName: String? = null)
+  val stateName: String? = null
+)
