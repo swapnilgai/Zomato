@@ -8,6 +8,7 @@
   <string name="api_key"></string>
   <string name="success">success</string>
   <string name="city_object">city object</string>
+  <string name="error_message">Oops, Something went wrong</string>
 
 
 </resources>

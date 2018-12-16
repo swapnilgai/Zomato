@@ -1,5 +1,6 @@
 package java.com.zomato.util
 
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -21,11 +22,19 @@ object Binder {
 
   @JvmStatic
   @BindingAdapter("imageUrl")
-  fun loadPropertyImage(imageView: ImageView, imageUrl: String?) {
+  fun loadImage(imageView: ImageView, imageUrl: String?) {
     Glide.with(imageView)
       .load(imageUrl)
       .apply(options)
       .into(imageView);
   }
 
+  @JvmStatic
+  @BindingAdapter("set_loading")
+  fun setLoading(view: View, isLoading: Boolean) {
+    if (isLoading)
+      view.visibility = View.VISIBLE
+    else
+      view.visibility = View.GONE
+  }
 }

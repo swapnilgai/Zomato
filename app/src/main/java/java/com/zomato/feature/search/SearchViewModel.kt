@@ -13,9 +13,8 @@ class SearchViewModel @Inject constructor(val searchApiAccess: SearchApiAccess) 
 
   private val compositeDisposable = CompositeDisposable()
   val list: ObservableList<City> = ObservableArrayList()
-  val loading: ObservableBoolean = ObservableBoolean(true)
+  val loading: ObservableBoolean = ObservableBoolean(false)
   val error: ObservableBoolean = ObservableBoolean(false)
-
 
   fun getSearchResult(input: String) {
     searchApiAccess

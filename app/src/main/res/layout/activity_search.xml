@@ -10,20 +10,12 @@
   app:layout_constraintTop_toTopOf="parent"
   tools:context=".feature.search.SearchActivity"
   >
-  <TextView
-    android:id="@+id/search_title"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    android:text="Zomato Search"
-    android:textSize="24sp"
-    />
 
   <androidx.cardview.widget.CardView
     android:elevation="2dp"
     android:id="@+id/search_card_view"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    app:layout_constraintTop_toBottomOf="@+id/search_title"
     >
     <EditText
       android:hint="@string/search_city"
@@ -31,7 +23,7 @@
       android:inputType="textPersonName"
       android:layout_height="wrap_content"
       android:layout_width="match_parent"
-      android:textSize="20sp"
+      android:textSize="22sp"
       />
 
   </androidx.cardview.widget.CardView>
