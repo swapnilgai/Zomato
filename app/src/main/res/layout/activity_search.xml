@@ -10,15 +10,16 @@
   <androidx.cardview.widget.CardView
     android:elevation="2dp"
     android:id="@+id/search_card_view"
-    android:layout_height="0dp"
-    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
     >
     <EditText
       android:hint="@string/search_city"
       android:id="@+id/search_edit_text"
       android:inputType="textPersonName"
-      android:layout_height="0dp"
-      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:textSize="13sp"
       />
 
   </androidx.cardview.widget.CardView>

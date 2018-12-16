@@ -2,11 +2,12 @@ package java.com.zomato.network
 
 import io.reactivex.Observable
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Query
-import java.com.zomato.model.City
+import java.com.zomato.model.CityBody
 
 
 interface ApiAccess {
   @GET("cities")
-  fun getAutoSuggestResult(@Query("user-key") apiKey : String, @Query("q") searchString: String): Observable<List<City>>
+  fun getAutoSuggestResult(@Header("user-key") apiKey: String, @Query("q") searchString: String): Observable<CityBody>
 }

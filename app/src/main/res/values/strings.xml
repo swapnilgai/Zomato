@@ -1,8 +1,10 @@
 <resources>
   <string name="app_name">Zomato</string>
   <string name="search_city">Search city</string>
-  <string name="server_Error">Server_Error</string>
+  <string name="server_error">Server_Error</string>
   <string name="empty_list_error">Empty list error</string>
   <string name="base_url">https://developers.zomato.com/api/v2.1/</string>
   <string name="search_cities">cities</string>
+  <string name="api_key"></string>
+  <string name="success">success</string>
 </resources>
