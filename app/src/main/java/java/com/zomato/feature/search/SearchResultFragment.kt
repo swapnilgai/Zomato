@@ -26,8 +26,6 @@ class SearchResultFragment : Fragment(), SearchItemNavigator {
 
   private var searchViewModel: SearchViewModel? = null
 
-  lateinit var binding: SearchFragmentDataBinding
-
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?

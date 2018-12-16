@@ -3,7 +3,7 @@ package java.com.zomato.model
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class Restaurant (
+class Restaurant(
   @Expose
   val apikey: String? = null,
   @SerializedName("average_cost_for_two")

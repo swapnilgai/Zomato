@@ -1,9 +1,6 @@
 package java.com.zomato.feature.search
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -15,6 +12,7 @@ import kotlinx.android.synthetic.main.activity_search.container
 import kotlinx.android.synthetic.main.activity_search.search_edit_text
 import java.com.zomato.R
 import java.com.zomato.di.ViewModelFactory
+import java.com.zomato.util.afterTextChanged
 import javax.inject.Inject
 
 class SearchActivity : AppCompatActivity(), HasSupportFragmentInjector {
@@ -35,20 +33,7 @@ class SearchActivity : AppCompatActivity(), HasSupportFragmentInjector {
     searchViewModel = ViewModelProviders.of(this, viewModelFactory)
       .get(SearchViewModel::class.java)
 
-    //.afterTextChanged { s: String -> searchViewModel?.getSearchResult(s) }
-
-
-    (search_edit_text as EditText).addTextChangedListener(object : TextWatcher {
-      override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-      }
-
-      override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-      }
-
-      override fun afterTextChanged(editable: Editable?) {
-        searchViewModel?.getSearchResult(editable.toString())
-      }
-    })
+    search_edit_text.afterTextChanged { s: String -> searchViewModel?.getSearchResult(s) }
 
     supportFragmentManager.beginTransaction().add(container.id, SearchResultFragment()).commit()
   }
@@ -56,6 +41,4 @@ class SearchActivity : AppCompatActivity(), HasSupportFragmentInjector {
   override fun supportFragmentInjector(): AndroidInjector<Fragment> {
     return supportFragmentInjector
   }
-
-
 }

@@ -1,16 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
-  android:layout_height="match_parent"
-  android:layout_width="match_parent"
-  tools:context=".feature.srp.SrpFragment"
   >
 
-  <!-- TODO: Update blank fragment layout -->
-  <TextView
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:text="@string/hello_blank_fragment"
-    />
+  <data class="SrpFragmentDataBinding">
+    <variable
+      name="viewModel"
+      type="java.com.zomato.feature.srp.SrpViewModel"
+      />
+  </data>
 
-</FrameLayout>
+  <androidx.core.widget.NestedScrollView
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    >
+
+    <LinearLayout
+      android:gravity="center"
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:orientation="vertical"
+      tools:context=".feature.search.SearchResultFragment"
+      >
+
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/srp_result_rv"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:items="@{viewModel.list}"
+        />
+
+      <ProgressBar
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:set_loading="@{viewModel.loading}"
+        />
+
+      <TextView
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="@string/error_message"
+        app:set_loading="@{viewModel.error}"
+        />
+
+    </LinearLayout>
+  </androidx.core.widget.NestedScrollView>
+</layout>

@@ -16,7 +16,7 @@ data class City(
   val discoveryEnabled: Long? = null,
   @SerializedName("has_new_ad_format")
   val hasNewAdFormat: Long? = null,
-  private var id: Long? = null,
+  var id: Long? = null,
   @SerializedName("is_state")
   val isState: Long? = null,
   val name: String? = null,

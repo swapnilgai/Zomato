@@ -6,27 +6,30 @@ import androidx.databinding.ObservableList
 import androidx.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import java.com.zomato.model.City
 import java.com.zomato.model.Restaurant
-import java.com.zomato.util.SearchResultState
 import java.com.zomato.util.SrpResultState
 import javax.inject.Inject
 
-class SrpViewModel @Inject constructor(private val searchApiAccess: SearchApiAccess) : ViewModel(){
+class SrpViewModel @Inject constructor(private val searchApiAccess: SearchApiAccess) : ViewModel() {
 
   private val compositeDisposable = CompositeDisposable()
   val list: ObservableList<Restaurant> = ObservableArrayList()
   val loading: ObservableBoolean = ObservableBoolean(false)
   val error: ObservableBoolean = ObservableBoolean(false)
+  private var start: Long = 0
+  private var id: Long = 0
 
-
-  fun getSrpResult(input : String){
-    searchApiAccess.getSrpResult(input)
+  fun getSrpResult(id: Long) {
+    searchApiAccess.getSrpResult(id, start + 20)
       .observeOn(AndroidSchedulers.mainThread())
-      .subscribe {  t: SrpResultState -> handelResponse(t) }
+      .subscribe { t: SrpResultState -> handelResponse(t) }
       .let { compositeDisposable.add(it) }
   }
 
+  fun onSwipeToRefresh() {
+    start = 0
+    getSrpResult(id)
+  }
 
   private fun handelResponse(searchResultState: SrpResultState) {
     when (searchResultState) {
@@ -34,6 +37,7 @@ class SrpViewModel @Inject constructor(private val searchApiAccess: SearchApiAcc
         renderSuccess(searchResultState.list)
       }
       is SrpResultState.Loading -> {
+        this.id = id
         renderLoading()
       }
       is SrpResultState.Error -> {
@@ -44,7 +48,9 @@ class SrpViewModel @Inject constructor(private val searchApiAccess: SearchApiAcc
   }
 
   private fun renderSuccess(listItems: List<Restaurant>) {
-    list.clear()
+    if (start == 0L) {
+      list.clear()
+    }
     list.addAll(listItems)
     loading.set(false)
     error.set(false)

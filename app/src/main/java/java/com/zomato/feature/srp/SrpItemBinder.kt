@@ -1,16 +1,16 @@
-package java.com.zomato.feature.search
+package java.com.zomato.feature.srp
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import java.com.zomato.model.City
+import java.com.zomato.feature.search.SearchRecyclerAdapter
+import java.com.zomato.model.Restaurant
 
-object SearchItemBinder {
-
+object SrpItemBinder {
   @JvmStatic
   @BindingAdapter("items")
-  fun setSearchList(view: RecyclerView, list: List<City>) {
+  fun setSrpList(view: RecyclerView, list: List<Restaurant>) {
     if (view.adapter is SearchRecyclerAdapter) {
-      val adapter = (view.adapter as SearchRecyclerAdapter)
+      val adapter = (view.adapter as SrpRecyclerAdapter)
       adapter.let {
         it.clear()
         it.addAll(list)
