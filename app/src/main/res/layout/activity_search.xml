@@ -4,14 +4,26 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_height="match_parent"
   android:layout_width="match_parent"
+  app:layout_constraintBottom_toBottomOf="parent"
+  app:layout_constraintLeft_toLeftOf="parent"
+  app:layout_constraintRight_toRightOf="parent"
+  app:layout_constraintTop_toTopOf="parent"
   tools:context=".feature.search.SearchActivity"
   >
+  <TextView
+    android:id="@+id/search_title"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:text="Zomato Search"
+    android:textSize="24sp"
+    />
 
   <androidx.cardview.widget.CardView
     android:elevation="2dp"
     android:id="@+id/search_card_view"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
+    app:layout_constraintTop_toBottomOf="@+id/search_title"
     >
     <EditText
       android:hint="@string/search_city"
@@ -19,16 +31,16 @@
       android:inputType="textPersonName"
       android:layout_height="wrap_content"
       android:layout_width="match_parent"
-      android:textSize="13sp"
+      android:textSize="20sp"
       />
 
   </androidx.cardview.widget.CardView>
 
   <FrameLayout
     android:id="@+id/container"
-    android:layout_height="0dp"
+    android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
-    android:layout_width="0dp"
+    android:layout_width="match_parent"
     app:layout_constraintTop_toBottomOf="@+id/search_card_view"
     />
 </androidx.constraintlayout.widget.ConstraintLayout>

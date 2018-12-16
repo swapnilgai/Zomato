@@ -26,7 +26,6 @@ class SearchViewModel @Inject constructor(val searchApiAccess: SearchApiAccess) 
 
   private fun handelResponse(searchResultState: SearchResultState) {
     when (searchResultState) {
-
       is SearchResultState.Success -> {
         renderSuccess(searchResultState.list)
       }

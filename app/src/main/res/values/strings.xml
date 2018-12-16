@@ -7,4 +7,7 @@
   <string name="search_cities">cities</string>
   <string name="api_key"></string>
   <string name="success">success</string>
+  <string name="city_object">city object</string>
+
+
 </resources>

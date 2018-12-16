@@ -10,17 +10,25 @@
       type="java.com.zomato.feature.search.SearchViewModel"
       />
   </data>
-  <FrameLayout
-    android:layout_height="match_parent"
+
+  <androidx.core.widget.NestedScrollView
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    tools:context=".feature.search.SearchResultFragment"
     >
 
-    <androidx.recyclerview.widget.RecyclerView
-      android:layout_height="match_parent"
+    <LinearLayout
+      android:layout_height="wrap_content"
       android:layout_width="match_parent"
-      app:items="@{viewModel.list}"
-      />
+      tools:context=".feature.search.SearchResultFragment"
+      >
 
-  </FrameLayout>
+      <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_result_rv"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:items="@{viewModel.list}"
+        />
+
+    </LinearLayout>
+  </androidx.core.widget.NestedScrollView>
 </layout>
