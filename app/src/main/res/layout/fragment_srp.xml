@@ -11,41 +11,41 @@
       />
   </data>
 
-  <androidx.core.widget.NestedScrollView
-    android:layout_height="wrap_content"
+
+  <LinearLayout
+    android:layout_gravity="center"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    tools:context=".feature.search.SearchResultFragment"
     >
 
-    <LinearLayout
-      android:gravity="center"
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/srp_result_rv"
+      android:layout_height="match_parent"
+      android:layout_width="match_parent"
+      android:scrollbarAlwaysDrawVerticalTrack="true"
+      android:scrollbarStyle="outsideOverlay"
+      android:scrollbars="vertical"
+      app:items="@{viewModel.list}"
+      />
+
+    <ProgressBar
+      android:layout_gravity="center"
       android:layout_height="wrap_content"
       android:layout_width="match_parent"
-      android:orientation="vertical"
-      tools:context=".feature.search.SearchResultFragment"
-      >
+      app:set_loading="@{viewModel.loading}"
+      />
 
-      <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/srp_result_rv"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        app:items="@{viewModel.list}"
-        />
+    <TextView
+      android:layout_gravity="center"
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:text="@string/error_message"
+      app:set_loading="@{viewModel.error}"
+      />
 
-      <ProgressBar
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        app:set_loading="@{viewModel.loading}"
-        />
-
-      <TextView
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="@string/error_message"
-        app:set_loading="@{viewModel.error}"
-        />
-
-    </LinearLayout>
-  </androidx.core.widget.NestedScrollView>
+  </LinearLayout>
 </layout>

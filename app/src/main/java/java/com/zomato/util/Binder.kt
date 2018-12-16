@@ -3,30 +3,21 @@ package java.com.zomato.util
 import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.bumptech.glide.Glide
-import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.RequestOptions
+import java.com.zomato.R
 
 
 object Binder {
 
-  private val options by lazy {
-    RequestOptions()
-      .centerCrop()
-      .diskCacheStrategy(DiskCacheStrategy.ALL)
-      .priority(Priority.HIGH)
-      .dontAnimate()
-      .dontTransform();
-  }
-
   @JvmStatic
   @BindingAdapter("imageUrl")
   fun loadImage(imageView: ImageView, imageUrl: String?) {
-    Glide.with(imageView)
+    GlideApp.with(imageView.context)
       .load(imageUrl)
-      .apply(options)
-      .into(imageView);
+      .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+      .error(R.drawable.fallback)
+      .fallback(R.drawable.fallback)
+      .into(imageView)
   }
 
   @JvmStatic

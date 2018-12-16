@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.support.AndroidSupportInjection
 import java.com.zomato.databinding.SrpFragmentDataBinding
 import java.com.zomato.di.ViewModelFactory
@@ -27,15 +27,11 @@ class SrpFragment : Fragment(), SrpItemNavigator {
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
-    // Inflate the layout for this fragment
-
     val binding = SrpFragmentDataBinding.inflate(inflater, container, false)
     binding.viewModel = srpViewModel
     binding.srpResultRv.adapter = SrpRecyclerAdapter(this)
-    binding.srpResultRv.layoutManager =
-        StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+    binding.srpResultRv.layoutManager = LinearLayoutManager(activity)
     return binding.root
-
   }
 
   override fun onAttach(context: Context?) {
@@ -48,7 +44,5 @@ class SrpFragment : Fragment(), SrpItemNavigator {
   }
 
   override fun onClick(restaurant: Restaurant) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
   }
-
 }

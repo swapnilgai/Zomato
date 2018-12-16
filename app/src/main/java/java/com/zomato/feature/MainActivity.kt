@@ -39,11 +39,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
       .get(SrpViewModel::class.java)
 
     search_tv.setOnClickListener {
-      //Intent(this, SearchActivity::class.java).putExtra("", it.toString())
       startActivityForResult(Intent(this, SearchActivity::class.java), 1)
-
-//      it.text?.let {
-//      }
     }
   }
 
@@ -57,6 +53,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     if (requestCode == 1) {
       if (resultCode == Activity.RESULT_OK) {
         val result: City? = data?.getParcelableExtra(getString(R.string.city_object))
+        search_tv.text = result?.name
         result?.id?.let {
           srpViewModel?.getSrpResult(it)
         }

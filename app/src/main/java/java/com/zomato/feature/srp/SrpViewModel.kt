@@ -51,7 +51,7 @@ class SrpViewModel @Inject constructor(private val searchApiAccess: SearchApiAcc
     if (start == 0L) {
       list.clear()
     }
-    list.addAll(listItems)
+    listItems.forEach { restaurant: Restaurant -> list.add(restaurant.restaurant) }
     loading.set(false)
     error.set(false)
   }

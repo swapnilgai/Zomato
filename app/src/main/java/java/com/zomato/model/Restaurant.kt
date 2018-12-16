@@ -41,6 +41,8 @@ class Restaurant(
   @SerializedName("is_zomato_book_res")
   val isZomatoBookRes: Long? = null,
   @Expose
+  val restaurant: Restaurant? = null,
+  @Expose
   val location: Location? = null,
   @SerializedName("menu_url")
   val menuUrl: String? = null,
@@ -48,8 +50,6 @@ class Restaurant(
   val mezzoProvider: String? = null,
   @Expose
   val name: String? = null,
-  @Expose
-  val offers: List<Any>? = null,
   @SerializedName("opentable_support")
   val opentableSupport: Long? = null,
   @SerializedName("order_deeplink")
@@ -60,8 +60,6 @@ class Restaurant(
   val photosUrl: String? = null,
   @SerializedName("price_range")
   val priceRange: Long? = null,
-  @Expose
-  val restaurant: Restaurant? = null,
   @SerializedName("switch_to_order_menu")
   val switchToOrderMenu: Long? = null,
   @Expose
