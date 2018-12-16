@@ -83,6 +83,7 @@ dependencies {
   implementation "android.arch.lifecycle:runtime:$android_arch_version"
   implementation "android.arch.lifecycle:extensions:$android_arch_version"
   implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+  implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
   kapt "android.arch.persistence.room:compiler:$room_version"
   kapt "android.arch.lifecycle:compiler:$android_arch_version"
   implementation "android.arch.persistence.room:rxjava2:$room_version"
