@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import java.com.zomato.di.ViewModelFactory
 import java.com.zomato.di.ViewModelKey
+import java.com.zomato.feature.rdp.RdpViewModel
 import java.com.zomato.feature.search.SearchViewModel
 import java.com.zomato.feature.srp.SrpViewModel
 
@@ -22,6 +23,11 @@ abstract class ViewModelModule {
   @ViewModelKey(SrpViewModel::class)
   @Binds
   abstract fun bindSrpViewModel(srpViewModel: SrpViewModel): ViewModel
+
+  @IntoMap
+  @ViewModelKey(RdpViewModel::class)
+  @Binds
+  abstract fun bindRdpViewModel(rdpViewModel: RdpViewModel): ViewModel
 
   @Binds
   abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

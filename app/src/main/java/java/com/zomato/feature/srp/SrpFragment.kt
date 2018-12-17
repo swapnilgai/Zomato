@@ -2,6 +2,7 @@ package java.com.zomato.feature.srp
 
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +11,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.android.support.AndroidSupportInjection
+import java.com.zomato.R
 import java.com.zomato.databinding.SrpFragmentDataBinding
 import java.com.zomato.di.ViewModelFactory
+import java.com.zomato.feature.rdp.RdpActivity
 import java.com.zomato.model.Restaurant
 import javax.inject.Inject
 
@@ -44,5 +47,10 @@ class SrpFragment : Fragment(), SrpItemNavigator {
   }
 
   override fun onClick(restaurant: Restaurant) {
+    val intent = Intent(activity, RdpActivity::class.java).putExtra(
+      getString(R.string.restaurant_object),
+      restaurant
+    )
+    startActivity(intent)
   }
 }
