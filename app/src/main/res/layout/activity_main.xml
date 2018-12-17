@@ -1,20 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_height="match_parent"
   android:layout_width="match_parent"
+  android:orientation="vertical"
   tools:context=".feature.MainActivity"
   >
 
-  <TextView
+  <fragment
+    android:id="@+id/srp_fragment"
     android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    android:text="Hello World!"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
+    android:layout_marginBottom="24dp"
+    android:layout_width="match_parent"
+    android:name="java.com.zomato.feature.srp.SrpFragment"
+    app:layout_constraintBottom_toTopOf="@+id/main_card_view"
+    app:layout_constraintEnd_toStartOf="@id/main_card_view"
+    app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     />
 
-</android.support.constraint.ConstraintLayout>
+  <androidx.cardview.widget.CardView
+    android:elevation="2dp"
+    android:id="@+id/main_card_view"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    >
+    <TextView
+      android:ellipsize="end"
+      android:gravity="center_vertical"
+      android:hint="@string/search_city"
+      android:id="@+id/search_tv"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_width="match_parent"
+      android:maxLines="1"
+      android:paddingEnd="8dp"
+      android:paddingStart="8dp"
+      android:textColor="@android:color/black"
+      android:textSize="24sp"
+      />
+
+
+  </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

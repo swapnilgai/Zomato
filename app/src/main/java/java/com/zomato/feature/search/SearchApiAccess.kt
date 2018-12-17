@@ -2,19 +2,14 @@ package java.com.zomato.feature.search
 
 import android.content.Context
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.Single
 import java.com.zomato.R
 import java.com.zomato.network.ApiAccess
 import java.com.zomato.util.SearchResultState
-import java.util.concurrent.TimeUnit.MILLISECONDS
 import javax.inject.Inject
 
-class SearchApiAccess @Inject constructor(val apiAccess: ApiAccess, val context: Context) {
+class SearchApiAccess @Inject constructor(private val apiAccess: ApiAccess, private val context: Context) {
 
-  companion object {
-    private const val DEBOUNCE_INTERVAL: Long = 200
-  }
 
   /**
    * Function performs search call on api for user entered input string
@@ -25,21 +20,18 @@ class SearchApiAccess @Inject constructor(val apiAccess: ApiAccess, val context:
     return apiAccess.getAutoSuggestResult(
       apiKey = context.getString(R.string.api_key),
       searchString = input
-    )
-      .debounce(DEBOUNCE_INTERVAL, MILLISECONDS)
-      .switchMap { body ->
-        if (!body.status.equals(context.getString(R.string.success)))
-          Observable.just(SearchResultState.Error(Throwable(context.getString(R.string.server_error))))
-        else if (body.cityList != null)
-          Observable.just(SearchResultState.Success(body.cityList))
-        else
-          Observable.just(SearchResultState.Error(Throwable(context.getString(R.string.empty_list_error))))
-      }
+    ).flatMap { body ->
+      if (!body.status.equals(context.getString(R.string.success)))
+        Single.just(SearchResultState.Error(Throwable(context.getString(R.string.server_error))))
+      else if (body.cityList != null)
+        Single.just(SearchResultState.Success(body.cityList))
+      else
+        Single.just(SearchResultState.Error(Throwable(context.getString(R.string.empty_list_error))))
+    }
       .onErrorReturn { throwable: Throwable ->
         SearchResultState.Error(throwable)
       }
-      .observeOn(AndroidSchedulers.mainThread())
-      .subscribeOn(Schedulers.io())
+      .toObservable()
       .startWith(SearchResultState.Loading)
   }
 }

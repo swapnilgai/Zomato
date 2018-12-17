@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  >
+
+  <data class="SrpItemDataBinding">
+    <variable
+      name="item"
+      type="java.com.zomato.model.Restaurant"
+      />
+
+    <variable
+      name="navigator"
+      type="java.com.zomato.feature.srp.SrpItemNavigator"
+      />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:onClick="@{() -> navigator.onClick(item)}"
+    >
+
+    <ImageView
+      android:id="@+id/srp_iv"
+      android:layout_height="0dp"
+      android:layout_width="match_parent"
+      android:scaleType="fitXY"
+      app:imageUrl="@{item.thumb}"
+      app:layout_constraintDimensionRatio="16:9"
+      />
+    <TextView
+      android:id="@+id/srp_name"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_width="match_parent"
+      android:text="@{item.name}"
+      android:textSize="16sp"
+      app:layout_constraintTop_toBottomOf="@id/srp_iv"
+      />
+    <TextView
+      android:id="@+id/srp_address"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_width="match_parent"
+      android:text="@{item.location.address}"
+      android:textSize="12sp"
+      app:layout_constraintTop_toBottomOf="@id/srp_name"
+      />
+    <View
+      android:layout_height="1dp"
+      android:layout_marginBottom="4dp"
+      android:layout_marginStart="4dp"
+      android:layout_width="match_parent"
+      />
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

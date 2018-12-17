@@ -1,4 +1,4 @@
-package java.com.zomato.feature.search
+package java.com.zomato.feature.srp
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,19 +6,18 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import java.com.zomato.R
-import java.com.zomato.databinding.SearchItemDataBinding
-import java.com.zomato.model.City
+import java.com.zomato.databinding.SrpItemDataBinding
+import java.com.zomato.model.Restaurant
 import java.com.zomato.util.ArrayRecyclerAdapter
 
-
-class SearchRecyclerAdapter(private val searchItemNavigator: SearchItemNavigator) :
-  ArrayRecyclerAdapter<City, ViewHolder>() {
+class SrpRecyclerAdapter(private val srpItemNavigator: SrpItemNavigator) :
+  ArrayRecyclerAdapter<Restaurant, ViewHolder>() {
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-    val viewBinding = DataBindingUtil.inflate<SearchItemDataBinding>(
+    val viewBinding = DataBindingUtil.inflate<SrpItemDataBinding>(
       LayoutInflater.from(parent.context),
-      R.layout.search_item,
+      R.layout.srp_item,
       parent,
       false
     )
@@ -26,15 +25,9 @@ class SearchRecyclerAdapter(private val searchItemNavigator: SearchItemNavigator
   }
 
   override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
     if (holder is DataResultHolder) {
-      val searchItemNavigator = object : SearchItemNavigator {
-        override fun onClick(city: City) {
-          searchItemNavigator.onClick(city)
-        }
-      }
       holder.binding.item = getItem(position)
-      holder.binding.navigator = searchItemNavigator
+      holder.binding.navigator = srpItemNavigator
     }
   }
 
@@ -42,6 +35,6 @@ class SearchRecyclerAdapter(private val searchItemNavigator: SearchItemNavigator
     return position
   }
 
-  inner class DataResultHolder(val binding: SearchItemDataBinding) :
+  inner class DataResultHolder(val binding: SrpItemDataBinding) :
     RecyclerView.ViewHolder(binding.root)
 }

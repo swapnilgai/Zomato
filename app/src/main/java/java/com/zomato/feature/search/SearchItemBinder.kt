@@ -8,7 +8,7 @@ object SearchItemBinder {
 
   @JvmStatic
   @BindingAdapter("items")
-  fun setSchoolList(view: RecyclerView, list: List<City>) {
+  fun setSearchList(view: RecyclerView, list: List<City>) {
     if (view.adapter is SearchRecyclerAdapter) {
       val adapter = (view.adapter as SearchRecyclerAdapter)
       adapter.let {

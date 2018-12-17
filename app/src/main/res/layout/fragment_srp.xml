@@ -4,26 +4,31 @@
   xmlns:tools="http://schemas.android.com/tools"
   >
 
-  <data class="SearchFragmentDataBinding">
+  <data class="SrpFragmentDataBinding">
     <variable
       name="viewModel"
-      type="java.com.zomato.feature.search.SearchViewModel"
+      type="java.com.zomato.feature.srp.SrpViewModel"
       />
   </data>
 
 
   <LinearLayout
-    android:gravity="center"
-    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
     android:layout_width="match_parent"
     android:orientation="vertical"
     tools:context=".feature.search.SearchResultFragment"
     >
 
+
     <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/search_result_rv"
-      android:layout_height="wrap_content"
+      android:id="@+id/srp_result_rv"
+      android:layout_height="match_parent"
       android:layout_width="match_parent"
+      android:scrollbarAlwaysDrawVerticalTrack="true"
+      android:scrollbarStyle="outsideOverlay"
+      android:scrollbars="vertical"
       app:items="@{viewModel.list}"
       />
 
