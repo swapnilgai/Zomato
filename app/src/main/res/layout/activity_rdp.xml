@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
-  android:layout_height="match_parent"
-  android:layout_width="match_parent"
-  tools:context=".feature.rdp.RdpActivity"
   >
-
-
-  <ImageView
-    android:layout_height="0dp"
+  <data class="DetailDataBinding">
+    <variable
+      name="viewModel"
+      type="java.com.zomato.feature.rdp.RdpViewModel"
+      />
+  </data>
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    app:layout_constraintDimensionRatio="16:9"
-    />
+    tools:context=".feature.rdp.RdpActivity"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+      android:id="@+id/rdp_iv"
+      android:layout_height="0dp"
+      android:layout_width="match_parent"
+      app:imageUrl="@{viewModel.restaurant.thumb}"
+      app:layout_constraintDimensionRatio="16:9"
+      />
+
+    <TextView
+      android:id="@+id/rdp_name"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      android:layout_width="match_parent"
+      android:text="@{viewModel.restaurant.name}"
+      app:layout_constraintTop_toBottomOf="@+id/rdp_iv"
+      />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

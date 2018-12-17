@@ -20,7 +20,7 @@ class SearchViewModel @Inject constructor(private val searchApiAccess: SearchApi
   val list: ObservableList<City> = ObservableArrayList()
   val loading: ObservableBoolean = ObservableBoolean(false)
   val error: ObservableBoolean = ObservableBoolean(false)
-  val intentReceiver: PublishSubject<String> = PublishSubject.create()
+  private val intentReceiver: PublishSubject<String> = PublishSubject.create()
 
   companion object {
     private const val DEBOUNCE_INTERVAL: Long = 200

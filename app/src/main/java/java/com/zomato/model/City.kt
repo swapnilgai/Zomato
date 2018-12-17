@@ -42,8 +42,7 @@ data class City(
     parcel.readString(),
     parcel.readValue(Long::class.java.classLoader) as? Long,
     parcel.readString()
-  ) {
-  }
+  )
 
   override fun writeToParcel(parcel: Parcel, flags: Int) {
     parcel.writeString(countryFlagUrl)
