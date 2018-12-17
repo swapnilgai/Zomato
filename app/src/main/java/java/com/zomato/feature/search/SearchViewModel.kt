@@ -13,7 +13,7 @@ import java.com.zomato.util.SearchResultState
 import java.util.concurrent.TimeUnit.MILLISECONDS
 import javax.inject.Inject
 
-class SearchViewModel @Inject constructor(val searchApiAccess: SearchApiAccess) : ViewModel() {
+class SearchViewModel @Inject constructor(private val searchApiAccess: SearchApiAccess) : ViewModel() {
 
   private val compositeDisposable = CompositeDisposable()
   val list: ObservableList<City> = ObservableArrayList()
