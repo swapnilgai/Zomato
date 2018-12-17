@@ -10,7 +10,7 @@ import java.com.zomato.databinding.SrpItemDataBinding
 import java.com.zomato.model.Restaurant
 import java.com.zomato.util.ArrayRecyclerAdapter
 
-class SrpRecyclerAdapter(val srpItemNavigator: SrpItemNavigator) :
+class SrpRecyclerAdapter(private val srpItemNavigator: SrpItemNavigator) :
   ArrayRecyclerAdapter<Restaurant, ViewHolder>() {
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

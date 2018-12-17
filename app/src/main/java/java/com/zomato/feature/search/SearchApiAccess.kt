@@ -8,7 +8,7 @@ import java.com.zomato.network.ApiAccess
 import java.com.zomato.util.SearchResultState
 import javax.inject.Inject
 
-class SearchApiAccess @Inject constructor(val apiAccess: ApiAccess, val context: Context) {
+class SearchApiAccess @Inject constructor(private val apiAccess: ApiAccess, private val context: Context) {
 
 
   /**

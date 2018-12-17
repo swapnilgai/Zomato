@@ -11,7 +11,7 @@ import java.com.zomato.model.City
 import java.com.zomato.util.ArrayRecyclerAdapter
 
 
-class SearchRecyclerAdapter(val searchItemNavigator: SearchItemNavigator) :
+class SearchRecyclerAdapter(private val searchItemNavigator: SearchItemNavigator) :
   ArrayRecyclerAdapter<City, ViewHolder>() {
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

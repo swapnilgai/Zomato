@@ -8,7 +8,7 @@ import java.com.zomato.network.ApiAccess
 import java.com.zomato.util.SrpResultState
 import javax.inject.Inject
 
-class SearchApiAccess @Inject constructor(val apiAccess: ApiAccess, val context: Context) {
+class SearchApiAccess @Inject constructor(private val apiAccess: ApiAccess, val context: Context) {
 
   /**
    * Function performs search call on api to get restaurant near user entered location
