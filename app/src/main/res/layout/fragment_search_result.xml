@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  >
+
+  <data class="SearchFragmentDataBinding">
+    <variable
+      name="viewModel"
+      type="java.com.zomato.feature.search.SearchViewModel"
+      />
+  </data>
+
+
+  <LinearLayout
+    android:gravity="center"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    tools:context=".feature.search.SearchResultFragment"
+    >
+
+    <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/search_result_rv"
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      app:items="@{viewModel.list}"
+      />
+
+    <ProgressBar
+      android:layout_gravity="center"
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      app:set_loading="@{viewModel.loading}"
+      />
+
+    <TextView
+      android:layout_gravity="center"
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:text="@string/error_message"
+      app:set_loading="@{viewModel.error}"
+      />
+
+  </LinearLayout>
+</layout>
